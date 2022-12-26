@@ -1,7 +1,36 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddContactComponent } from './add-contact/add-contact.component';
+import { ContactManagerComponent } from './contact-manager/contact-manager.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { UpdateContactComponent } from './update-contact/update-contact.component';
+import { ViewContactComponent } from './view-contact/view-contact.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  //to redirect automatically from localhiost to caontactmanagewr
+  { path: '', redirectTo: '/contacts/admin', pathMatch: 'full' },
+  //path for contactmanagercomponent
+  {
+    path: 'contacts/admin', component: ContactManagerComponent
+  },
+  //add contactcomponent
+  {
+    path: 'contacts/add', component: AddContactComponent
+  },
+  //update component
+
+  {
+    path: 'contacts/edit/:contactId', component: UpdateContactComponent
+  },
+  //view component
+  {
+    path: 'contacts/view/:contactId', component: ViewContactComponent
+  },
+  //page not found ** use to represent  it
+  {
+    path: '**', component: PageNotFoundComponent
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

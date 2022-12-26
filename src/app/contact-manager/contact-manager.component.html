@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>contact management application
+                <a routerLink="/contacts/add" class=" btn btn-dark">
+                    <i class="fa-solid fa-plus"></i> &nbsp;
+                    ADD NEW
+                </a>
+            </h1>
+            <p style="text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores
+                assumenda dolore veniam laborum
+                fugit, animi beatae necessitatibus libero quas repudiandae a laudantium, fugiat aliquid ullam debitis
+                placeat natus mollitia facere.</p>
+            <div class="row">
+                <div class="col-6">
+                    <input (keyup)="search($event)" type="text" class="form-control " placeholder="search contact">
+                </div>
+
+            </div>
+
+            <div class="container mt-2">
+                <div class="row">
+                    <div class="col-md-6 mt-3" *ngFor="let contact of allContacts | filter : searchKey:'name' ">
+                        <div class="card list-group-item-secondary">
+                            <div class="card-body">
+                                <div class="row align-item-center">
+                                    <div class="col-md-4">
+                                        <img height="150px" [src]="contact.photo" class="contact_image">
+                                    </div>
+                                    <div class="col-md-7">
+                                        <ul class="list-group">
+                                            <li class="list-group-item">name:<b>{{contact.name}}</b></li>
+                                            <li class="list-group-item">email: {{contact.email}}</li>
+                                            <li class="list-group-item">mobile no:{{contact.mobile}}</li>
+
+                                        </ul>
+
+                                    </div>
+                                    <div class="col-md-1 d-flex flex-column justify-content-center align-items-center">
+                                        <a routerLink="/contacts/view/{{contact.id}}" class="btn btn-info">
+                                            <i class="fa-solid fa-eye"></i>
+                                        </a>
+                                        <a routerLink="/contacts/edit/:contactId" class="btn btn-success mt-1">
+                                            <i class="fa-solid fa-pen"></i>
+                                        </a>
+                                        <button class="btn btn-danger mt-1">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
